@@ -31,7 +31,10 @@ function [optimal_scale,scales_vec,cost_log,idxP] = scale_sweep(particles,numsam
 
 initAng = 2;     % dummy parameter used to set the number of initial angles in pairFitting
 % scales_vec = linspace(0.001,0.5,30);          % fine scales vector
-scales_vec = linspace(0.001,1.5,30);                 % coarse scale vector
+% scales_vec = linspace(0.001,1.5,30);                 % coarse scale vector
+% scales_vec = 1:30;
+% scales_vec = linspace(0.001,200,30);
+scales_vec = linspace(0.001,50,30); % RML our data is scaled differently, use a different range
 
 % use GPU code
 USE_GPU_GAUSSTRANSFORM = true;

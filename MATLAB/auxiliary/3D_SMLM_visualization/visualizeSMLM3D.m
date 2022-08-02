@@ -19,6 +19,7 @@ function density = visualizeSMLM3D(data, sigma, show)
         figure;
         % visulaization
         scatter3(data(:,1),data(:,2), data(:,3), 1, density, '.');
+% scatter3(data(:,1),data(:,2), data(:,3), 100, density, '.'); % RML 2021-12 for troubleshooting -- can see each particle more clearly
         colormap(hot);
         set(gca,'Color','k')                                    % the background should be black for the hot colormap
         axis equal, axis square
