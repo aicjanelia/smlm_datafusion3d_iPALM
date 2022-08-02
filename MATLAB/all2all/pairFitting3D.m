@@ -65,26 +65,26 @@ if ischar(initAng)      % sampling from file
         d = [d;repmat(scale(i),length(x1),1)];
     end
 else            % samp[ling using Euler angles
-% multiple start
-if initAng==1
-    ang1 = [0 pi/2 pi 3*pi/2];
-    ang2 = [0];
-    ang3 = [0];
-elseif initAng==2
-    ang1 = [0 pi/2 pi 3*pi/2];
-    ang2 = [0 pi/2 pi 3*pi/2];
-    ang3 = [0 pi/2 pi 3*pi/2];
-else
-    ang1 = linspace(-pi,pi,initAng);
-    ang2 = linspace(-pi,pi,initAng);
-    ang3 = linspace(-pi,pi,initAng);
-end
-
-[a, b, c, d] = ndgrid(ang1,ang2,ang3,scale); % use all combinations of initial angles and scales as in initialization parameters for GMM registration
-
-for i=1:numel(a)
-    q_init(i,:) = ang2q(a(i),b(i),c(i));
-end
+    % multiple start
+    if initAng==1
+        ang1 = [0 pi/2 pi 3*pi/2];
+        ang2 = [0];
+        ang3 = [0];
+    elseif initAng==2
+        ang1 = [0 pi/2 pi 3*pi/2];
+        ang2 = [0 pi/2 pi 3*pi/2];
+        ang3 = [0 pi/2 pi 3*pi/2];
+    else
+        ang1 = linspace(-pi,pi,initAng);
+        ang2 = linspace(-pi,pi,initAng);
+        ang3 = linspace(-pi,pi,initAng);
+    end
+    
+    [a, b, c, d] = ndgrid(ang1,ang2,ang3,scale); % use all combinations of initial angles and scales as in initialization parameters for GMM registration
+    
+    for i=1:numel(a)
+        q_init(i,:) = ang2q(a(i),b(i),c(i));
+    end
 end
 
 

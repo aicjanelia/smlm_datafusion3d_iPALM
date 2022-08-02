@@ -47,6 +47,11 @@ function [initAlignedParticles, sup] = makeTemplate(M_new, subParticles, N)
         initAlignedParticles{1,i}.points = subParticlesTformed;
         initAlignedParticles{1,i}.sigma = subParticles{1,i}.sigma;    
 
+        % RML 2021-12-08: let the peakSelector data come along for the ride
+        initAlignedParticles{1,i}.txtData = subParticles{1,i}.txtData;
+        initAlignedParticles{1,i}.headers = subParticles{1,i}.headers;
+%         initAlignedParticles{1,i}.formatted = subParticles{1,i}.formatted;
+
         % stack all registered particles
         sup = [sup; subParticlesTformed];
 
