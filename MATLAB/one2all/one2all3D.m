@@ -84,8 +84,8 @@ function [ superParticle, MT] = one2all3D(Particles, iter, oldM, outdir, sup, sy
 
             if sym_flag
                 % with 8-fold symmetry assumption of NPC
-                tmpParticle.points = [tmpParticle.points; rotate_by_pifourth3d(transform_by_rigid3d(M.points, parameter{j,i}))];
-                Particles{1,i}.points = rotate_by_pifourth3d(transform_by_rigid3d(M.points, parameter{j,i}));
+                tmpParticle.points = [tmpParticle.points; rotate_by_pifourth3d(transform_by_rigid3d(M.points, parameter{j,i}),sym_flag)]; %2021/11/19 RML make sym_flag = fold symmetry
+                Particles{1,i}.points = rotate_by_pifourth3d(transform_by_rigid3d(M.points, parameter{j,i}),sym_flag);
             else
                 % wihtout 8-fold symmetry assumption of NPC
                 tmpParticle.points = [tmpParticle.points; (transform_by_rigid3d(M.points, parameter{j,i}))];            
@@ -110,7 +110,8 @@ function [ superParticle, MT] = one2all3D(Particles, iter, oldM, outdir, sup, sy
     MT = zeros(4,4,N,iter);
 
     % save to disk
-    save([outdir '/superParticle'], 'superParticle');
+%     save([outdir '/superParticle'], 'superParticle');
+    save([outdir 'superParticle.mat'], 'superParticle');
     
     disp('Bootstapping is done  !');
     
